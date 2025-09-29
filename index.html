@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadangan Confirm AI untuk Negeri Pahang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* CSS Reset & Global Styles */
+        :root {
+            --primary-color: #005a9e; /* Warna Jata Pahang */
+            --secondary-color: #f7b300; /* Warna Jata Pahang */
+            --dark-color: #2c3e50;
+            --light-color: #f4f4f9;
+            --white-color: #ffffff;
+            --box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--dark-color);
+            background-color: var(--white-color);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 2rem;
+            overflow: hidden;
+        }
+        section {
+            padding: 4rem 0;
+        }
+        h1, h2, h3 {
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.2rem; text-align: center; }
+        p { margin-bottom: 1rem; }
+        .text-center { text-align: center; }
+        .bg-light { background-color: var(--light-color); }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(0, 90, 158, 0.8), rgba(44, 62, 80, 0.8)), url('https://assets.bharian.com.my/images/articles/masjid-Sultan-Ahmad-Shah-Kuantan_1618548324.jpg') no-repeat center center/cover;
+            color: var(--white-color);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+        #hero h1 {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        #hero .logos {
+            margin-top: 1rem;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        #hero .logos img {
+            height: 60px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Challenges Section (Updated to 2x2 grid) */
+        #cabaran .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .card {
+            background: var(--white-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Solution Section */
+        #penyelesaian .solution-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+        }
+        #penyelesaian .logos {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        #penyelesaian .logos img {
+            height: 50px;
+        }
+
+        /* How It Works Section */
+        .how-it-works-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        .how-it-works-grid .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .how-it-works-grid .benefit-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-top: 5px;
+        }
+
+        /* Investment Section (Tab UI/UX) */
+        .tabs {
+            margin-top: 3rem;
+        }
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #ddd;
+        }
+        .tab-btn {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #888;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+        .tab-btn.active::after {
+            transform: scaleX(1);
+        }
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        .proposal-card-content {
+            background-color: var(--white-color);
+            border-radius: 10px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+        .proposal-scope {
+            font-style: italic;
+            color: #666;
+            margin-top: -1rem;
+        }
+        .proposal-card-content .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .proposal-card-content .stat-item-small .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .proposal-card-content .stat-item-small .stat-label {
+            font-size: 1rem;
+            color: #555;
+        }
+        .proposal-card-content .cost-summary {
+            background-color: var(--dark-color);
+            color: var(--white-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+        .cost-summary h4 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        .cost-summary .total-cost {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        .cost-summary p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            font-weight: 300;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CTA Section */
+        #cta {
+            text-align: center;
+        }
+        #cta .logos {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            align-items: center;
+        }
+        #cta .logos img {
+            height: 60px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            #hero { height: auto; padding: 6rem 1rem; }
+            #cabaran .cards { grid-template-columns: 1fr; }
+            .how-it-works-grid { grid-template-columns: 1fr; }
+            .how-it-works-grid img { display: none; }
+            .tab-btn { padding: 1rem; font-size: 1rem; }
+            .proposal-card-content .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SECTION 1: HERO -->
+    <header id="hero">
+        <div class="fade-in">
+            <h1>Mentransformasi Pendidikan Pahang Melalui AI</h1>
+            <h3>Memperkasakan <span class="student-count">281,277</span> Pelajar di 740 Sekolah dengan Platform Pembelajaran Peribadi, Confirm AI.</h3>
+            <p>Sebuah cadangan untuk pelaburan pintar dalam modal insan demi masa depan Negeri Pahang yang gemilang.</p>
+            <div class="logos">
+                <img src="Jata Pahang.png" alt="Jata Pahang">
+                <img src="Logo JPN Pahang.png" alt="Logo JPN Pahang">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 2: CHALLENGES -->
+        <section id="cabaran" class="container">
+            <div class="fade-in">
+                <h2>Menangani Cabaran Pendidikan Semasa</h2>
+                <div class="cards">
+                    <div class="card">
+                        <i class="fa-solid fa-person-chalkboard"></i>
+                        <h3>Kelas Ganti Tidak Produktif</h3>
+                        <p>Setiap kali guru tidak hadir, masa pembelajaran berharga terbuang. Pelajar tidak dapat meneruskan pembelajaran secara berstruktur.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-users-line"></i>
+                        <h3>Kesukaran Tumpuan Individu</h3>
+                        <p>Saiz kelas yang besar menyukarkan guru untuk mengenal pasti dan membantu setiap pelajar mengikut tahap penguasaan mereka yang berbeza.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-money-bill-trend-up"></i>
+                        <h3>Beban Kos Tuisyen Rakyat</h3>
+                        <p>Ibu bapa terpaksa menanggung kos dan masa yang tinggi untuk kelas tambahan demi memastikan anak-anak mereka cemerlang.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        <h3>Kos Bantuan Runcit Kerajaan</h3>
+                        <p>Program jangka pendek seperti bengkel 3 hari untuk 170 pelajar boleh menelan belanja >RM15,000. Confirm AI adalah solusi jangka panjang yang lebih mampan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SOLUTION -->
+        <section id="penyelesaian" class="bg-light">
+            <div class="container fade-in">
+                <div class="solution-intro">
+                    <h2>Confirm AI: Satu Platform, Penyelesaian Menyeluruh</h2>
+                    <p>Confirm AI adalah platform tuisyen dalam talian yang dibangunkan oleh <strong>UNITEN</strong> dan diiktiraf oleh <strong>Kementerian Pendidikan Malaysia</strong>. Ia menggunakan teknologi Kecerdasan Buatan (AI) dan kaedah "Mastery-Based Learning" untuk bertindak sebagai tutor peribadi maya bagi setiap pelajar.</p>
+                    <div class="logos">
+                         <img src="Logo Uniten.png" alt="Logo Uniten" style="height: 60px;">
+                         <img src="Confirm Ai.png" alt="Logo Confirm AI" style="height: 60px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: HOW IT SOLVES PROBLEMS -->
+        <section id="bagaimana-ia-berfungsi" class="container">
+             <div class="fade-in">
+                <h2 class="text-center">Bagaimana Confirm AI Mengubah Situasi?</h2>
+                <div class="how-it-works-grid">
+                    <div>
+                        <div class="benefit-item">
+                            <i class="fa-solid fa-laptop-file"></i>
+                            <div>
+                                <h3>Kelas Relief yang Produktif</h3>
+                                <p>Mengubah masa relief yang pasif menjadi sesi pembelajaran kendiri yang aktif dan dipantau oleh sistem. Tiada lagi masa terbuang.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                             <i class="fa-solid fa-piggy-bank"></i>
+                            <div>
+                                <h3>Tuisyen Pintar & Kos Efektif</h3>
+                                <p>Menyediakan tuisyen berkualiti 24/7 terus kepada pelajar, mengurangkan pergantungan pada pusat tuisyen luaran yang mahal.</p>
+                            </div>
+                        </div>
+                         <div class="benefit-item">
+                             <i class="fa-solid fa-user-graduate"></i>
+                            <div>
+                                <h3>Pembelajaran Peribadi untuk Semua</h3>
+                                <p>AI mengenal pasti kelemahan setiap pelajar dan menyediakan latihan khusus, membantu guru merancang pengajaran dengan lebih berkesan.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="text-center">
+                        <img src="https://img.freepik.com/free-vector/online-education-concept_1012-32.jpg?w=740" alt="E-Learning" style="max-width: 100%; border-radius: 10px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECTION 5: INVESTMENT & IMPACT (TAB UI/UX) -->
+        <section id="pelaburan" class="bg-light">
+            <div class="container fade-in">
+                <h2>Dua Cadangan Pelaksanaan & Pelaburan</h2>
+                <p class="text-center" style="max-width: 700px; margin-left: auto; margin-right: auto;">Berikut adalah dua opsyen cadangan untuk pertimbangan, berdasarkan skop pelaksanaan yang berbeza dengan kos pendaftaran <strong>RM100 untuk setiap pelajar (sekali bayar)</strong>.</p>
+                
+                <div class="tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="A">Cadangan A: Menyeluruh</button>
+                        <button class="tab-btn" data-tab="B">Cadangan B: Berfokus</button>
+                    </div>
+                    <div class="tab-content">
+                        <!-- Tab Pane A -->
+                        <div class="tab-pane active" id="tabA">
+                            <div class="proposal-card-content">
+                                <h3>Pelaksanaan Menyeluruh</h3>
+                                <p class="proposal-scope">(Semua Sekolah Rendah & Menengah)</p>
+                                <div class="stats-grid">
+                                    <div class="stat-item-small">
+                                        <div class="stat-number">740</div>
+                                        <div class="stat-label">Jumlah Sekolah<br>(543 Rendah, 197 Menengah)</div>
+                                    </div>
+                                    <div class="stat-item-small">
+                                        <div class="stat-number">281,277</div>
+                                        <div class="stat-label">Jumlah Pelajar<br>Akan Diperkasakan</div>
+                                    </div>
+                                </div>
+                                <div class="cost-summary">
+                                    <h4>Anggaran Kos Pelaburan (Sekali Bayar)</h4>
+                                    <div class="total-cost">RM 28,127,700</div>
+                                    <p>Pelaburan komprehensif untuk mentransformasi pendidikan di semua peringkat.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tab Pane B -->
+                        <div class="tab-pane" id="tabB">
+                            <div class="proposal-card-content">
+                                <h3>Pelaksanaan Berfokus</h3>
+                                <p class="proposal-scope">(Sekolah Menengah Sahaja)</p>
+                                 <div class="stats-grid">
+                                    <div class="stat-item-small">
+                                        <div class="stat-number">197</div>
+                                        <div class="stat-label">Jumlah Sekolah<br>(Menengah Sahaja)</div>
+                                    </div>
+                                    <div class="stat-item-small">
+                                        <div class="stat-number">112,311</div>
+                                        <div class="stat-label">Jumlah Pelajar<br>Akan Diperkasakan</div>
+                                    </div>
+                                </div>
+                                <div class="cost-summary">
+                                    <h4>Anggaran Kos Pelaburan (Sekali Bayar)</h4>
+                                    <div class="total-cost">RM 11,231,100</div>
+                                    <p>Pelaburan strategik yang menyasarkan pelajar di peringkat kritikal untuk persediaan ke pengajian tinggi dan kerjaya.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 6: CALL TO ACTION -->
+        <section id="cta" class="container">
+            <div class="fade-in">
+                <h2>Wawasan Pahang Maju: Mari Realisasikannya Bersama</h2>
+                <p>Dengan meluluskan dana ini, Kerajaan Negeri Pahang melabur dalam modal insan, meringankan beban guru, ibu bapa, dan perbelanjaan kerajaan, serta melonjakkan Pahang sebagai peneraju inovasi pendidikan di Malaysia.</p>
+                <div class="logos">
+                     <img src="Jata Pahang.png" alt="Jata Pahang">
+                     <img src="Logo JPN Pahang.png" alt="Logo JPN Pahang">
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Cadangan Disediakan untuk Pertimbangan Kerajaan Negeri Pahang | &copy; 2025</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const faders = document.querySelectorAll('.fade-in');
+        const observerOptions = {
+            root: null,
+            threshold: 0.2,
+            rootMargin: "0px"
+        };
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        }, observerOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and panes
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding pane
+                button.classList.add('active');
+                const targetTab = button.getAttribute('data-tab');
+                document.getElementById(`tab${targetTab}`).classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
