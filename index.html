@@ -76,7 +76,7 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         #hero .logos {
-            margin-top: 1.5rem; /* Added more space */
+            margin-bottom: 2rem; /* Changed from margin-top */
             display: flex;
             justify-content: center; /* Ensures centering */
             gap: 3rem; /* Increased gap */
@@ -84,7 +84,8 @@
             width: 100%;
         }
         #hero .logos img {
-            height: 180px; /* Increased from 60px */
+            height: 180px; /* Changed to 180px */
+            filter: grayscale(100%); /* Added for black & white effect */
         }
 
         /* Challenges Section (Updated to 2x2 grid) */
@@ -277,6 +278,7 @@
             h1 { font-size: 2.5rem; }
             h2 { font-size: 1.8rem; }
             #hero { height: auto; padding: 6rem 1rem; }
+            #hero .logos img { height: 120px; } /* Adjust logo size for mobile */
             #cabaran .cards { grid-template-columns: 1fr; }
             .how-it-works-grid { grid-template-columns: 1fr; }
             .how-it-works-grid img { display: none; }
@@ -290,13 +292,13 @@
     <!-- SECTION 1: HERO -->
     <header id="hero">
         <div class="fade-in">
-            <h1>Mentransformasi Pendidikan Pahang Melalui AI</h1>
-            <h3>Memperkasakan <span class="student-count">281,277</span> Pelajar di 740 Sekolah dengan Platform Pembelajaran Peribadi, Confirm AI.</h3>
-            <p>Sebuah cadangan untuk pelaburan pintar dalam modal insan demi masa depan Negeri Pahang yang gemilang.</p>
             <div class="logos">
                 <img src="Jata Pahang.png" alt="Jata Pahang">
                 <img src="Logo JPN Pahang.png" alt="Logo JPN Pahang">
             </div>
+            <h1>Mentransformasi Pendidikan Pahang Melalui AI</h1>
+            <h3>Memperkasakan <span class="student-count">281,277</span> Pelajar di 740 Sekolah dengan Platform Pembelajaran Peribadi, Confirm AI.</h3>
+            <p>Sebuah cadangan untuk pelaburan pintar dalam modal insan demi masa depan Negeri Pahang yang gemilang.</p>
         </div>
     </header>
 
