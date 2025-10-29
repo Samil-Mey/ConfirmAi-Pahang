@@ -149,9 +149,7 @@
             margin-top: 5px;
         }
 
-        /* * === BAHAGIAN DIUBAH SUAI ===
-         * Perubahan pada .tab-btn dan .tab-buttons
-        */
+        /* Investment Section (Tab UI/UX) */
         .tabs {
             margin-top: 3rem;
         }
@@ -162,17 +160,17 @@
             border-bottom: 2px solid #ddd;
         }
         .tab-btn {
-            padding: 1rem 1.5rem; /* Diubah suai dari 2rem */
+            padding: 1rem 1.5rem; 
             cursor: pointer;
             background: none;
             border: none;
-            font-size: 1.1rem; /* Diubah suai dari 1.2rem */
+            font-size: 1.1rem; 
             font-weight: 600;
             color: #888;
             position: relative;
             transition: color 0.3s ease;
-            flex-grow: 1; /* Ditambah untuk seimbangkan 4 tab */
-            text-align: center; /* Ditambah untuk seimbangkan 4 tab */
+            flex-grow: 1; 
+            text-align: center; 
         }
         .tab-btn::after {
             content: '';
@@ -212,12 +210,12 @@
         }
         .proposal-card-content .stats-grid {
             display: grid;
-            grid-template-columns: 1fr; /* Diubah suai dari repeat(2, 1fr) */
+            grid-template-columns: 1fr; 
             gap: 1.5rem;
             margin: 2rem 0;
-            max-width: 300px; /* Ditambah */
-            margin-left: auto; /* Ditambah */
-            margin-right: auto; /* Ditambah */
+            max-width: 300px; 
+            margin-left: auto; 
+            margin-right: auto; 
         }
         .proposal-card-content .stat-item-small .stat-number {
             font-size: 2.5rem;
@@ -280,9 +278,7 @@
             padding: 2rem 0;
         }
 
-        /* * === BAHAGIAN DIUBAH SUAI ===
-         * Perubahan pada Responsive Media Query
-        */
+        /* Responsive */
         @media(max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 1.8rem; }
@@ -293,17 +289,17 @@
             .how-it-works-grid img { display: none; }
             
             .tab-buttons {
-                flex-wrap: wrap; /* Ditambah: Benarkan tab wrap ke baris baru */
-                border-bottom: none; /* Ditambah: Buang border bawah */
+                flex-wrap: wrap; 
+                border-bottom: none; 
             }
             .tab-btn {
                 padding: 1rem;
-                font-size: 0.9rem; /* Diubah suai dari 1rem */
-                flex-basis: 50%; /* Ditambah: Jadikan 2x2 grid */
-                border-bottom: 2px solid #ddd; /* Ditambah: Pindah border ke butang */
+                font-size: 0.9rem; 
+                flex-basis: 50%; 
+                border-bottom: 2px solid #ddd; 
             }
             .tab-btn.active::after {
-                bottom: -2px; /* Pastikan garisan aktif selari dgn border */
+                bottom: -2px; 
             }
             .proposal-card-content .stats-grid { grid-template-columns: 1fr; }
         }
@@ -406,7 +402,7 @@
                 
                 <div class="tabs">
                     <div class="tab-buttons">
-                        <button class="tab-btn active" data-tab="A">Cadangan A (T3 STEM)</button>
+                        <button class="tab-btn active" data-tab="A">Cadangan A (T3 2025)</button>
                         <button class="tab-btn" data-tab="B">Cadangan B (T4 OA)</button>
                         <button class="tab-btn" data-tab="C">Cadangan C (T5 OA)</button>
                         <button class="tab-btn" data-tab="D">Cadangan D (T5 B40)</button>
@@ -415,18 +411,18 @@
                         
                         <div class="tab-pane active" id="tabA">
                             <div class="proposal-card-content">
-                                <h3>Cadangan A: Fokus STEM (Tingkatan 3)</h3>
-                                <p class="proposal-scope">(Murid Tingkatan 3 2025 - Fokus STEM)</p>
+                                <h3>Cadangan A: Murid Tingkatan 3 2025</h3>
+                                <p class="proposal-scope">(10% daripada jumlah keseluruhan murid tingkatan 3)</p>
                                 <div class="stats-grid">
                                     <div class="stat-item-small">
-                                        <div class="stat-number">20,258</div>
+                                        <div class="stat-number">2025</div>
                                         <div class="stat-label">Jumlah Pelajar Sasaran</div>
                                     </div>
                                 </div>
                                 <div class="cost-summary">
                                     <h4>Anggaran Kos Pelaburan (Sekali Bayar)</h4>
-                                    <div class="total-cost">RM 2,025,800</div>
-                                    <p>Pelaburan untuk memperkukuh laluan STEM bermula dari peringkat menengah rendah.</p>
+                                    <div class="total-cost">RM 202,500</div>
+                                    <p>Pelaburan untuk kumpulan fokus murid Tingkatan 3.</p>
                                 </div>
                             </div>
                         </div>
