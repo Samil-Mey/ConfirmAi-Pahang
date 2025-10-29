@@ -85,7 +85,7 @@
         }
         #hero .logos img {
             height: 180px; /* Changed to 180px */
-            filter: brightness(0) invert(1); 
+            filter: brightness(0) invert(1);    
         }
 
         /* Challenges Section (Updated to 2x2 grid) */
@@ -149,7 +149,9 @@
             margin-top: 5px;
         }
 
-        /* Investment Section (Tab UI/UX) */
+        /* * === BAHAGIAN DIUBAH SUAI ===
+         * Perubahan pada .tab-btn dan .tab-buttons
+        */
         .tabs {
             margin-top: 3rem;
         }
@@ -160,15 +162,17 @@
             border-bottom: 2px solid #ddd;
         }
         .tab-btn {
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem; /* Diubah suai dari 2rem */
             cursor: pointer;
             background: none;
             border: none;
-            font-size: 1.2rem;
+            font-size: 1.1rem; /* Diubah suai dari 1.2rem */
             font-weight: 600;
             color: #888;
             position: relative;
             transition: color 0.3s ease;
+            flex-grow: 1; /* Ditambah untuk seimbangkan 4 tab */
+            text-align: center; /* Ditambah untuk seimbangkan 4 tab */
         }
         .tab-btn::after {
             content: '';
@@ -208,9 +212,12 @@
         }
         .proposal-card-content .stats-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr; /* Diubah suai dari repeat(2, 1fr) */
             gap: 1.5rem;
             margin: 2rem 0;
+            max-width: 300px; /* Ditambah */
+            margin-left: auto; /* Ditambah */
+            margin-right: auto; /* Ditambah */
         }
         .proposal-card-content .stat-item-small .stat-number {
             font-size: 2.5rem;
@@ -273,7 +280,9 @@
             padding: 2rem 0;
         }
 
-        /* Responsive */
+        /* * === BAHAGIAN DIUBAH SUAI ===
+         * Perubahan pada Responsive Media Query
+        */
         @media(max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 1.8rem; }
@@ -282,14 +291,26 @@
             #cabaran .cards { grid-template-columns: 1fr; }
             .how-it-works-grid { grid-template-columns: 1fr; }
             .how-it-works-grid img { display: none; }
-            .tab-btn { padding: 1rem; font-size: 1rem; }
+            
+            .tab-buttons {
+                flex-wrap: wrap; /* Ditambah: Benarkan tab wrap ke baris baru */
+                border-bottom: none; /* Ditambah: Buang border bawah */
+            }
+            .tab-btn {
+                padding: 1rem;
+                font-size: 0.9rem; /* Diubah suai dari 1rem */
+                flex-basis: 50%; /* Ditambah: Jadikan 2x2 grid */
+                border-bottom: 2px solid #ddd; /* Ditambah: Pindah border ke butang */
+            }
+            .tab-btn.active::after {
+                bottom: -2px; /* Pastikan garisan aktif selari dgn border */
+            }
             .proposal-card-content .stats-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SECTION 1: HERO -->
     <header id="hero">
         <div class="fade-in">
             <div class="logos">
@@ -303,7 +324,6 @@
     </header>
 
     <main>
-        <!-- SECTION 2: CHALLENGES -->
         <section id="cabaran" class="container">
             <div class="fade-in">
                 <h2>Menangani Cabaran Pendidikan Semasa</h2>
@@ -332,7 +352,6 @@
             </div>
         </section>
 
-        <!-- SECTION 3: SOLUTION -->
         <section id="penyelesaian" class="bg-light">
             <div class="container fade-in">
                 <div class="solution-intro">
@@ -346,7 +365,6 @@
             </div>
         </section>
 
-        <!-- SECTION 4: HOW IT SOLVES PROBLEMS -->
         <section id="bagaimana-ia-berfungsi" class="container">
              <div class="fade-in">
                 <h2 class="text-center">Bagaimana Confirm AI Mengubah Situasi?</h2>
@@ -381,69 +399,98 @@
             </div>
         </section>
         
-        <!-- SECTION 5: INVESTMENT & IMPACT (TAB UI/UX) -->
         <section id="pelaburan" class="bg-light">
             <div class="container fade-in">
-                <h2>Dua Cadangan Pelaksanaan & Pelaburan</h2>
-                <p class="text-center" style="max-width: 700px; margin-left: auto; margin-right: auto;">Berikut adalah dua opsyen cadangan untuk pertimbangan, berdasarkan skop pelaksanaan yang berbeza dengan kos pendaftaran <strong>RM100 untuk setiap pelajar (sekali bayar)</strong>.</p>
+                <h2>Empat Cadangan Pelaksanaan Berfokus</h2>
+                <p class="text-center" style="max-width: 700px; margin-left: auto; margin-right: auto;">Berikut adalah empat cadangan berfokus untuk pertimbangan, berdasarkan kumpulan sasaran spesifik dengan kos pendaftaran <strong>RM100 untuk setiap pelajar (sekali bayar)</strong>.</p>
                 
                 <div class="tabs">
                     <div class="tab-buttons">
-                        <button class="tab-btn active" data-tab="A">Cadangan A: Menyeluruh</button>
-                        <button class="tab-btn" data-tab="B">Cadangan B: Berfokus</button>
+                        <button class="tab-btn active" data-tab="A">Cadangan A (T3 STEM)</button>
+                        <button class="tab-btn" data-tab="B">Cadangan B (T4 OA)</button>
+                        <button class="tab-btn" data-tab="C">Cadangan C (T5 OA)</button>
+                        <button class="tab-btn" data-tab="D">Cadangan D (T5 B40)</button>
                     </div>
                     <div class="tab-content">
-                        <!-- Tab Pane A -->
+                        
                         <div class="tab-pane active" id="tabA">
                             <div class="proposal-card-content">
-                                <h3>Pelaksanaan Menyeluruh</h3>
-                                <p class="proposal-scope">(Semua Sekolah Rendah & Menengah)</p>
+                                <h3>Cadangan A: Fokus STEM (Tingkatan 3)</h3>
+                                <p class="proposal-scope">(Murid Tingkatan 3 2025 - Fokus STEM)</p>
                                 <div class="stats-grid">
                                     <div class="stat-item-small">
-                                        <div class="stat-number">740</div>
-                                        <div class="stat-label">Jumlah Sekolah<br>(543 Rendah, 197 Menengah)</div>
-                                    </div>
-                                    <div class="stat-item-small">
-                                        <div class="stat-number">281,277</div>
-                                        <div class="stat-label">Jumlah Pelajar<br>Akan Diperkasakan</div>
+                                        <div class="stat-number">20,258</div>
+                                        <div class="stat-label">Jumlah Pelajar Sasaran</div>
                                     </div>
                                 </div>
                                 <div class="cost-summary">
                                     <h4>Anggaran Kos Pelaburan (Sekali Bayar)</h4>
-                                    <div class="total-cost">RM 28,127,700</div>
-                                    <p>Pelaburan komprehensif untuk mentransformasi pendidikan di semua peringkat.</p>
+                                    <div class="total-cost">RM 2,025,800</div>
+                                    <p>Pelaburan untuk memperkukuh laluan STEM bermula dari peringkat menengah rendah.</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- Tab Pane B -->
+                        
                         <div class="tab-pane" id="tabB">
                             <div class="proposal-card-content">
-                                <h3>Pelaksanaan Berfokus</h3>
-                                <p class="proposal-scope">(Sekolah Menengah Sahaja)</p>
+                                <h3>Cadangan B: Calon SPM 2026 (Orang Asli)</h3>
+                                <p class="proposal-scope">(Murid Orang Asli Tingkatan 4 2025)</p>
                                  <div class="stats-grid">
                                     <div class="stat-item-small">
-                                        <div class="stat-number">197</div>
-                                        <div class="stat-label">Jumlah Sekolah<br>(Menengah Sahaja)</div>
-                                    </div>
-                                    <div class="stat-item-small">
-                                        <div class="stat-number">112,311</div>
-                                        <div class="stat-label">Jumlah Pelajar<br>Akan Diperkasakan</div>
+                                        <div class="stat-number">634</div>
+                                        <div class="stat-label">Jumlah Pelajar Sasaran</div>
                                     </div>
                                 </div>
                                 <div class="cost-summary">
                                     <h4>Anggaran Kos Pelaburan (Sekali Bayar)</h4>
-                                    <div class="total-cost">RM 11,231,100</div>
-                                    <p>Pelaburan strategik yang menyasarkan pelajar di peringkat kritikal untuk persediaan ke pengajian tinggi dan kerjaya.</p>
+                                    <div class="total-cost">RM 63,400</div>
+                                    <p>Intervensi awal untuk persediaan pelajar Orang Asli menghadapi SPM 2026.</p>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="tab-pane" id="tabC">
+                            <div class="proposal-card-content">
+                                <h3>Cadangan C: Calon SPM 2025 (Orang Asli)</h3>
+                                <p class="proposal-scope">(Murid Orang Asli Tingkatan 5 2025)</p>
+                                 <div class="stats-grid">
+                                    <div class="stat-item-small">
+                                        <div class="stat-number">659</div>
+                                        <div class="stat-label">Jumlah Pelajar Sasaran</div>
+                                    </div>
+                                </div>
+                                <div class="cost-summary">
+                                    <h4>Anggaran Kos Pelaburan (Sekali Bayar)</h4>
+                                    <div class="total-cost">RM 65,900</div>
+                                    <p>Sokongan khusus untuk memastikan kecemerlangan pelajar Orang Asli dalam SPM 2025.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="tabD">
+                            <div class="proposal-card-content">
+                                <h3>Cadangan D: Calon SPM 2025 (B40)</h3>
+                                <p class="proposal-scope">(Murid Tingkatan 5 2025 - B40)</p>
+                                 <div class="stats-grid">
+                                    <div class="stat-item-small">
+                                        <div class="stat-number">3,370</div>
+                                        <div class="stat-label">Jumlah Pelajar Sasaran</div>
+                                    </div>
+                                </div>
+                                <div class="cost-summary">
+                                    <h4>Anggaran Kos Pelaburan (Sekali Bayar)</h4>
+                                    <div class="total-cost">RM 337,000</div>
+                                    <p>Bantuan tuisyen berfokus untuk merapatkan jurang pencapaian bagi pelajar B40.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- SECTION 6: CALL TO ACTION -->
         <section id="cta" class="container">
             <div class="fade-in">
                 <h2>Wawasan Pahang Maju: Mari Realisasikannya Bersama</h2>
@@ -500,4 +547,3 @@
 
 </body>
 </html>
-
